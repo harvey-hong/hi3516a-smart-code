@@ -1,0 +1,97 @@
+#ifndef HY_RTSP_H
+
+//HYPrivate接口定义文件
+#define HY_RTSP_H
+/*
+#ifdef HYPRIVATE_EXPORTS
+#define HYRTSP_API __declspec(dllexport)
+#else
+#define HYRTSP_API __declspec(dllimport)
+#endif
+*/
+
+#if defined( __cplusplus)
+#define HYRTSP_API  extern "C" __attribute__((visibility("default")))
+#else
+#define HYRTSP_API  __attribute__((visibility("default")))
+#endif
+
+//--#include "../../../../Server/src/inc/HieServer_Common.h"
+
+/*!
+* @brief
+*	设置配置信息操作接口
+* @param pInterface
+*	配置信息操作接口
+* @return
+*	返回0表示成功, 否则表示错误码
+* @note
+*	接口类型: 阻塞式
+*/
+//HYRTSP_API int HYRtsp_ConfigureIf(const LPConfigureInterface pInterface);
+
+/*!
+* @brief
+*	设置用户操作回调接口
+* @param pInterface
+*	用户操作接口
+* @return
+*	返回0表示成功, 否则表示错误码
+* @note
+*	接口类型: 阻塞式
+*/
+//HYRTSP_API int HYRtsp_UserActionIf(const LPUserActionInterface pInterface);
+
+/*!
+* @brief
+*	设置实时流捕获回调接口
+* @param pInterface
+*	实时流操作接口
+* @return
+*	返回0表示成功, 否则表示错误码
+* @note
+*	接口类型: 阻塞式
+*/
+//HYRTSP_API int HYRtsp_StreamCaptureIf(const LPStreamCaptureInterface pInterface);
+
+/*!
+* @brief
+*	启动服务
+* @return
+*	返回0表示成功, 否则表示错误码
+* @note
+*	启动服务后将会读取配置信息,
+*	所以启动前需要先 设置配置信息读写接口
+* @note
+*	接口类型: 阻塞式
+*/
+HYRTSP_API int HYRtsp_Start();
+
+/*!
+* @brief
+*	停止服务,断开所有协议及远程连接
+* @return
+*	返回0表示成功, 否则表示错误码
+* @note
+*	接口类型: 阻塞式
+*/
+HYRTSP_API int HYRtsp_Stop();
+
+/*!
+* @brief
+*	实时流媒体数据
+* @param dwChannel
+*	通道号
+* @param pRealStreamMedia
+*	实时流媒体
+* @return
+*	返回0表示成功, 否则表示错误码
+* @note
+*	接口类型: 非阻塞式
+*/
+//HYRTSP_API int HYRtsp_RealStreamMedia(DWORD dwChannel, eMediaCodeType eCodeType, const LPRealStreamMedia pRealStreamMedia);
+
+
+
+#endif
+

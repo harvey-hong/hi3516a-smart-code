@@ -1,0 +1,64 @@
+#!/bin/sh
+dir=`pwd | awk -F\/ '{print $NF}'`
+TARGET=lib$dir.so
+echo $TARGET
+
+############## process version info #############################
+
+TYPEFILE=../profile
+if [ -f $TYPEFILE ];then
+	TYPEINFO=`cut -d= -f2 $TYPEFILE`
+else
+	echo "no find ($TYPEFILE) file, build closed...................."
+	exit 1;
+fi
+echo $TYPEINFO
+
+DIR=./
+VERSIONFILE=version.c
+
+SVN=111
+TIME=333
+
+tLen=`echo $SVN | wc -c`
+if [ $tLen -eq 1 ];then
+		echo "get version info from svn fail, maybe version or date is wrong, please build with make command"
+		exit 1;
+fi
+
+softversion=0_0_0
+versionfile=../version.txt
+
+if [ -f $versionfile ];then
+	read softversion < $versionfile
+else
+	echo "no find ($versionfile) file, build closed...................."
+	echo "file format:"
+	echo ""
+	echo "1_0_0"
+	echo "up line number is major, minor & change version, must on first line"
+	echo "add change log"
+	exit 1;
+fi
+
+echo "build version info......."
+echo "/***********************">$VERSIONFILE
+svn info ./>>$VERSIONFILE
+echo "***********************/">>$VERSIONFILE
+
+VERSION="const char *iCamera_${TYPEINFO}_version_${dir} = \"Build${TYPEINFO}-${softversion}-$TIME-svn${SVN}\";"
+echo $VERSION>>$VERSIONFILE
+echo $VERSION
+################### process version info end ###########################
+
+
+rm -rf ./*/$TARGET
+rm -rf ./*/version.o
+
+echo "start build $TARGET"
+
+make clean -s
+make $1 -s
+#make test -s
+
+echo "build $TARGET ok"

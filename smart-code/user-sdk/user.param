@@ -1,0 +1,64 @@
+####### Set your software/src path here : all code under software/src/trunk ###########
+export SRC_ROOT_DIR=/opt/work/vm_shared/hi3516A/smart-code/src-dir/
+
+#### select 0 <default> ##### 
+#export SELECT_PRODUCT_TYPE=_WS_HVR_
+
+#### select 1 ##### 
+#export SELECT_PRODUCT_TYPE=_WS_NVR_
+
+#### select 2 ##### 
+#export SELECT_PRODUCT_TYPE=_WS_SDI_DVR_
+
+#### select 3 ##### 
+export SELECT_PRODUCT_TYPE=_WS_IPC_
+
+#### select 0 <default> #####
+#export SELECT_CHIP_TYPE=hi3531
+
+#### select 1 #####
+#export SELECT_CHIP_TYPE=hi3521
+
+#### select 2 #####
+#export SELECT_CHIP_TYPE=hi3535
+
+#### select 3 #####
+#export SELECT_CHIP_TYPE=hi3521a
+
+#### select 4 #####
+#export SELECT_CHIP_TYPE=hi3518a
+
+#### select 5 #####
+export SELECT_CHIP_TYPE=hi3516a
+
+#### select 6 #####
+#export SELECT_CHIP_TYPE=hi3518ev200
+
+#### select 7 #####
+#export SELECT_CHIP_TYPE=hi3536
+
+#### select 8 #####
+#export SELECT_CHIP_TYPE=hi3536c
+
+#### select 9 #####
+#export SELECT_CHIP_TYPE=hi3531a
+
+#### select 10 #####
+#export SELECT_CHIP_TYPE=hi3521d
+
+#### select 10 #####
+#export SELECT_CHIP_TYPE=hi3531d
+
+
+#### select 0 <default> #####
+#export BUILD_DEBUG=ON
+
+#### select 1 #####
+export BUILD_DEBUG=OFF
+
+#### select 0 <default> #####
+export BUILD_FAMILY=ON
+
+#### select 1 #####
+#export BUILD_FAMILY=OFF
+

@@ -1,0 +1,213 @@
+#!/bin/bash
+
+#------ Set crosss compile TOOL ---------------
+# hi3521, hi3531, hi3518a, hi3516c, hi3535, hi3515a , hi3520d, hi3532
+ifeq ($(SELECT_CHIP_TYPE), hi3521)
+export CONFIG_CROSS_COMPILER=arm-hisiv100nptl-linux-
+export CONFIG_MPP_PATH=/usr/local/src/Hi3521_SDK_V1.0.6.0/mpp
+
+ifeq ($(SELECT_PRODUCT_TYPE),_WS_HVR_)
+export CONFIG_FIRMWARE_TYPE=_WS_FAMILY_HVR_
+export TARGET_COPY=$(SRC_ROOT_DIR)/target/hi3531/ws_f_hvr
+else
+export CONFIG_FIRMWARE_TYPE=_WS_FAMILY_SDI_DVR_
+export TARGET_COPY=$(SRC_ROOT_DIR)/target/hi3531/ws_f_sdi_dvr
+endif
+
+export CONFIG_FILE_FIXED_LIB=$(SRC_ROOT_DIR)/target/hi3531/fixed_lib/
+
+else
+ifeq ($(SELECT_CHIP_TYPE), hi3531)
+export CONFIG_CROSS_COMPILER=arm-hisiv100nptl-linux-
+export CONFIG_MPP_PATH=/usr/local/src/Hi3531_SDK_V1.0.B.0/mpp
+
+ifeq ($(SELECT_PRODUCT_TYPE),_WS_HVR_)
+export CONFIG_FIRMWARE_TYPE=_WS_FAMILY_HVR_
+export TARGET_COPY=$(SRC_ROOT_DIR)/target/hi3531/ws_f_hvr
+else
+export CONFIG_FIRMWARE_TYPE=_WS_FAMILY_SDI_DVR_
+export TARGET_COPY=$(SRC_ROOT_DIR)/target/hi3531/ws_f_sdi_dvr
+endif
+
+export CONFIG_FILE_FIXED_LIB=$(SRC_ROOT_DIR)/target/hi3531/fixed_lib/
+
+else
+ifeq ($(SELECT_CHIP_TYPE), hi3535)
+export CONFIG_CROSS_COMPILER=arm-hisiv100nptl-linux-
+export CONFIG_MPP_PATH=/usr/local/src/Hi3535_SDK_V1.0.3.0/mpp
+
+export CONFIG_FIRMWARE_TYPE=_WS_FAMILY_NVR_
+
+export TARGET_COPY=$(SRC_ROOT_DIR)/target/hi3535/ws_f_nvr
+export CONFIG_FILE_FIXED_LIB=$(SRC_ROOT_DIR)/target/hi3535/fixed_lib/
+
+else
+ifeq ($(SELECT_CHIP_TYPE), hi3518a)
+export export CONFIG_BOARD_LAYER=_MULTI_
+export CONFIG_CROSS_COMPILER=arm-hisiv100nptl-linux-
+export CONFIG_MPP_PATH=/usr/local/src/Hi3518_SDK_V1.0.6.0_B030/mpp
+
+export CONFIG_FIRMWARE_TYPE=_WS_FAMILY_IPC_V100_
+export CONFIG_FIRMARE_VERSION=WS_HI3518A_V100_V001
+export CONFIG_FIRMARE_RECORD=ENABLE_RECORD
+
+export TARGET_COPY=$(SRC_ROOT_DIR)/target/hi3518a/ws_f_ipc/
+export CONFIG_FILE_FIXED_LIB=$(SRC_ROOT_DIR)/target/hi3518a/fixed_lib/
+
+else
+ifeq ($(SELECT_CHIP_TYPE), hi3536)
+export CONFIG_HISI_TYPE=hi3536
+export CONFIG_CROSS_COMPILER=arm-hisiv300-linux-
+export CONFIG_MPP_PATH=/usr/local/src/Hi3536_SDK_V2.0.6.0/mpp_single
+
+export CONFIG_FIRMWARE_TYPE=_WS_FAMILY_NVR_
+
+export TARGET_COPY=$(SRC_ROOT_DIR)/target/hi3536/ws_f_nvr
+export CONFIG_FILE_FIXED_LIB=$(SRC_ROOT_DIR)/target/hi3536/fixed_lib/
+
+else
+ifeq ($(SELECT_CHIP_TYPE), hi3521a)
+export CONFIG_CROSS_COMPILER=arm-hisiv300-linux-
+export CONFIG_MPP_PATH=/usr/local/src/Hi3521A_SDK_V1.0.5.0/mpp
+
+ifeq ($(SELECT_PRODUCT_TYPE),_WS_HVR_)
+export CONFIG_FIRMWARE_TYPE=_WS_FAMILY_HVR_
+export TARGET_COPY=$(SRC_ROOT_DIR)/target/hi3521a/ws_f_hvr
+else
+export CONFIG_FIRMWARE_TYPE=_WS_FAMILY_SDI_DVR_
+export TARGET_COPY=$(SRC_ROOT_DIR)/target/hi3521a/ws_f_sdi_dvr
+endif
+
+export CONFIG_FILE_FIXED_LIB=$(SRC_ROOT_DIR)/target/hi3521a/fixed_lib/
+
+else
+ifeq ($(SELECT_CHIP_TYPE), hi3516a)
+export export CONFIG_BOARD_LAYER=_MULTI_
+export CONFIG_CROSS_COMPILER=arm-hisiv300-linux-
+export CONFIG_MPP_PATH=/opt/Hi3516A_SDK_V1.0.5.0/mpp
+
+export CONFIG_FIRMWARE_TYPE=_WS_FAMILY_IPC_V300_
+
+export TARGET_COPY=$(SRC_ROOT_DIR)/target/hi3516a/ws_f_ipc/
+export CONFIG_FILE_FIXED_LIB=$(SRC_ROOT_DIR)/target/hi3516a/fixed_lib/
+
+export CONFIG_FIRMARE_VERSION=WS_HI3516A_V100_V001
+export CONFIG_FIRMARE_RECORD=DISABLE_RECORD
+else
+ifeq ($(SELECT_CHIP_TYPE), hi3518ev200)
+
+export CONFIG_CROSS_COMPILER=arm-hisiv300-linux-
+export CONFIG_MPP_PATH=/usr/local/src/Hi3518E_SDK_V1.0.4.1/mpp
+
+export CONFIG_FIRMWARE_TYPE=_WS_FAMILY_IPC_V300_
+
+export TARGET_COPY=$(SRC_ROOT_DIR)/target/hi3518ev200/ws_f_ipc/
+export CONFIG_FILE_FIXED_LIB=$(SRC_ROOT_DIR)/target/hi3518ev200/fixed_lib/
+
+export CONFIG_FIRMARE_VERSION=WS_HI3518E_V200_V001
+export CONFIG_FIRMARE_RECORD=ENABLE_RECORD
+else
+
+ifeq ($(SELECT_CHIP_TYPE), hi3536c)
+export CONFIG_CROSS_COMPILER=arm-hisiv500-linux-
+export CONFIG_MPP_PATH=/usr/local/src/Hi3536C_SDK_V1.0.0.1/mpp
+
+export CONFIG_FIRMWARE_TYPE=_WS_FAMILY_NVR_
+
+export TARGET_COPY=$(SRC_ROOT_DIR)/target/hi3536c/ws_f_nvr
+export CONFIG_FILE_FIXED_LIB=$(SRC_ROOT_DIR)/target/hi3536c/fixed_lib/
+else
+
+ifeq ($(SELECT_CHIP_TYPE), hi3531a)
+export CONFIG_CROSS_COMPILER=arm-hisiv300-linux-
+export CONFIG_MPP_PATH=/usr/local/src/Hi3531A_SDK_V1.0.4.0/mpp
+
+ifeq ($(SELECT_PRODUCT_TYPE),_WS_HVR_)
+export CONFIG_FIRMWARE_TYPE=_WS_FAMILY_HVR_
+export TARGET_COPY=$(SRC_ROOT_DIR)/target/hi3531a/ws_f_hvr
+else
+export CONFIG_FIRMWARE_TYPE=_WS_FAMILY_SDI_DVR_
+export TARGET_COPY=$(SRC_ROOT_DIR)/target/hi3531a/ws_f_sdi_dvr
+endif
+
+export CONFIG_FILE_FIXED_LIB=$(SRC_ROOT_DIR)/target/hi3531a/fixed_lib/
+else
+ifeq ($(SELECT_CHIP_TYPE), hi3521d)
+export CONFIG_CROSS_COMPILER=arm-hisiv500-linux-
+export CONFIG_MPP_PATH=/usr/local/src/Hi3521D_SDK_V1.0.3.0/mpp
+
+ifeq ($(SELECT_PRODUCT_TYPE),_WS_HVR_)
+export CONFIG_FIRMWARE_TYPE=_WS_FAMILY_HVR_
+export TARGET_COPY=$(SRC_ROOT_DIR)/target/hi3521d/ws_f_hvr
+else
+export CONFIG_FIRMWARE_TYPE=_WS_FAMILY_SDI_DVR_
+export TARGET_COPY=$(SRC_ROOT_DIR)/target/hi3521d/ws_f_sdi_dvr
+endif
+
+export CONFIG_FILE_FIXED_LIB=$(SRC_ROOT_DIR)/target/hi3521d/fixed_lib/
+
+else
+ifeq ($(SELECT_CHIP_TYPE), hi3531d)
+export CONFIG_CROSS_COMPILER=arm-hisiv500-linux-
+export CONFIG_MPP_PATH=/usr/local/src/Hi3531D_SDK_V1.0.3.0/mpp
+
+ifeq ($(SELECT_PRODUCT_TYPE),_WS_HVR_)
+export CONFIG_FIRMWARE_TYPE=_WS_FAMILY_HVR_
+export TARGET_COPY=$(SRC_ROOT_DIR)/target/hi3531d/ws_f_hvr
+else
+export CONFIG_FIRMWARE_TYPE=_WS_FAMILY_SDI_DVR_
+export TARGET_COPY=$(SRC_ROOT_DIR)/target/hi3531d/ws_f_sdi_dvr
+endif
+
+export CONFIG_FILE_FIXED_LIB=$(SRC_ROOT_DIR)/target/hi3531d/fixed_lib/
+####  add more chip type setting here
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+
+export CONFIG_HISI_TYPE=$(SELECT_CHIP_TYPE)
+
+ifeq ($(BUILD_DEBUG),ON)
+export CONFIG_MAKE_TYPE=_MAKE_DEBUG_
+else
+export CONFIG_MAKE_TYPE=_MAKE_RELEASE_
+endif
+
+
+export CONFIG_PLATFORM=_HISI_BOARD_
+#export CONFIG_PLATFORM=_LINUX_VMWARE_
+
+#---------------- FOR UPDATE -----------------------
+export CONFIG_FLASH=_NAND_
+#export CONFIG_FLASH=_SPI_
+
+#---------------- FOR 38 OR Single -----------------------
+export CONFIG_BOARD_LAYER=_MULTI_
+#export CONFIG_BOARD_LAYER=_SINGLE_
+
+#------------------ code place ---------------
+export CONFIG_CODE_PATH=$(SRC_ROOT_DIR)/trunk/
+
+#----------------- file place which can not compiled ----------------
+
+export CONFIG_FILE_USED_LANG=$(SRC_ROOT_DIR)/gui_language/
+export CONFIG_FILE_USED_PIC=$(SRC_ROOT_DIR)/gui_pic/
+export CONFIG_FILE_USED_SCRIPT=$(SRC_ROOT_DIR)/script_config/
+
+#---------------- TARGET LIB DIR --------------
+export CONFIG_NFS_LIB_PRE=/usr/local/src/tmp_nfs/
+
+#-------------- TOTAL CHANNEL CNT ---------------
+export CONFIG_MAX_CH=32
+
+#---------------- FILE System DOC, does not include /debug/mtd_family or /release/mtd_family
+export CONFIG_FILESYSTEM=/usr/local/src/file_system/
